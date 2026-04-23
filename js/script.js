@@ -190,7 +190,9 @@ function enviarPedido() {
   }
 
   let detalle = '';
-  items.forEach(i => detalle += `• ${i.innerText}\n`);
+  items.forEach(i => {
+  detalle += `• ${i.querySelector('span').textContent}\n`;
+});
 
   const texto = `Pedido 🍷
 Nombre: ${nombre}
