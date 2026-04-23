@@ -25,49 +25,40 @@ function closeMobile() {
    ANIMACIONES
 ══════════════════════════════════════════════════════════════ */
 const reveals = document.querySelectorAll('.reveal');
-
 if (reveals.length > 0) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, index * 80);
+        setTimeout(() => entry.target.classList.add('visible'), index * 80);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-
   reveals.forEach(el => observer.observe(el));
 }
 
 /* ═══════════════════════════════════════════════════════
    UTILIDADES
 ══════════════════════════════════════════════════════════════ */
-
 function getPackSizeFromCard(card) {
   const presActiva = card?.querySelector('.pres-btn.active');
-  if (!presActiva) return 1;
+  if (!presActiva) return 1; // botella
 
   const label = presActiva.querySelector('.pres-label')?.textContent?.toLowerCase() || '';
-
   if (label.includes('media')) return 6;
   if (label.includes('caja')) return 12;
-
   return 1;
 }
 
 function getActivePresentation(card) {
   const presActiva = card?.querySelector('.pres-btn.active');
   if (!presActiva) return 'botella';
-
   return presActiva.querySelector('.pres-label')?.textContent?.trim() || 'botella';
 }
 
 function pluralizar(text, cantidad) {
   if (cantidad <= 1) return text;
   if (text === 'botella') return 'botellas';
-
   const parts = text.split(' ');
   const last = parts.pop();
   parts.push(last.endsWith('s') ? last : last + 's');
@@ -75,38 +66,46 @@ function pluralizar(text, cantidad) {
 }
 
 /* ═══════════════════════════════════════════════════════
-   PRESENTACIÓN
+   PRESENTACIÓN (FIX TIEMPO REAL)
 ══════════════════════════════════════════════════════════════ */
 function selecPres(btn) {
   const card = btn.closest('.wine-card');
   const qtyInput = card.querySelector('.qty-val');
 
   if (btn.classList.contains('active')) {
+    // Deseleccionar
     card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
     qtyInput.value = 0;
   } else {
+    // Seleccionar
     card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    if (parseInt(qtyInput.value) === 0) {
+    if (parseInt(qtyInput.value || '0', 10) === 0) {
       qtyInput.value = 1;
     }
   }
 
-  generarPedido();
+  generarPedido(); // 🔥 sync UI
 }
 
 /* ═══════════════════════════════════════════════════════
-   CONTADOR
+   CONTADOR (FIX TIEMPO REAL)
 ══════════════════════════════════════════════════════════════ */
 function cambiarQty(btn, delta) {
-  const input = btn.closest('.qty-control').querySelector('.qty-val');
-  let valor = parseInt(input.value || 0);
+  const card = btn.closest('.wine-card');
+  const input = card.querySelector('.qty-val');
 
+  let valor = parseInt(input.value || '0', 10);
   valor = Math.max(0, valor + delta);
   input.value = valor;
 
-  generarPedido();
+  // Si llega a 0 → quitar presentación
+  if (valor === 0) {
+    card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+  }
+
+  generarPedido(); // 🔥 sync UI
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -115,6 +114,7 @@ function cambiarQty(btn, delta) {
 function generarPedido() {
   const cards = document.querySelectorAll('.wine-card');
   const lista = document.getElementById('listaPedido');
+  if (!lista) return;
 
   lista.innerHTML = '';
 
@@ -122,13 +122,13 @@ function generarPedido() {
     const nombre = card.dataset.nombre;
     const qtyInput = card.querySelector('.qty-val');
 
-    let rawQty = parseInt(qtyInput.value || '0');
+    let rawQty = parseInt(qtyInput?.value || '0', 10);
     const presActiva = card.querySelector('.pres-btn.active');
 
-    if (presActiva && rawQty === 0) {
-      rawQty = 1;
-    }
+    // Si hay presentación y qty=0 → tomar 1
+    if (presActiva && rawQty === 0) rawQty = 1;
 
+    // Si no hay nada → no agregar
     if (!presActiva && rawQty <= 0) return;
 
     const pack = getPackSizeFromCard(card);
@@ -138,12 +138,10 @@ function generarPedido() {
     presentacion = pluralizar(presentacion, rawQty);
 
     const li = document.createElement('li');
-
     li.innerHTML = `
       <span>${rawQty} ${presentacion} ${nombre} (${totalBotellas} botellas)</span>
       <button class="btn-remove" onclick="eliminarItem(this)">✕</button>
     `;
-
     lista.appendChild(li);
   });
 }
@@ -155,15 +153,11 @@ function eliminarItem(btn) {
   const li = btn.closest('li');
   const texto = li.querySelector('span').textContent;
 
-  const cards = document.querySelectorAll('.wine-card');
-
-  cards.forEach(card => {
+  document.querySelectorAll('.wine-card').forEach(card => {
     const nombre = card.dataset.nombre;
-
     if (texto.includes(nombre)) {
       const qty = card.querySelector('.qty-val');
       if (qty) qty.value = 0;
-
       card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
     }
   });
@@ -190,7 +184,6 @@ function enviarPedido() {
   generarPedido();
 
   const items = document.querySelectorAll('#listaPedido li');
-
   if (items.length === 0) {
     alert('Agrega productos');
     return;
@@ -214,28 +207,33 @@ ${mensaje || ''}`;
 }
 
 /* ═══════════════════════════════════════════════════════
-   INIT
+   INIT (FIX INPUT MANUAL)
 ══════════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
 
-  // limpiar cualquier selección inicial
+  // Limpiar estado inicial
   document.querySelectorAll('.wine-card').forEach(card => {
     card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
-
     const qty = card.querySelector('.qty-val');
     if (qty) qty.value = 0;
   });
 
-  const btnEnviar = document.getElementById('btnEnviarPedido');
-  if (btnEnviar) {
-    btnEnviar.addEventListener('click', enviarPedido);
-  }
-
+  // Input manual
   document.querySelectorAll('.qty-val').forEach(inp => {
     inp.addEventListener('input', () => {
       if (inp.value < 0) inp.value = 0;
-      generarPedido();
+
+      const card = inp.closest('.wine-card');
+
+      // Si ponen 0 manual → quitar presentación
+      if (parseInt(inp.value || '0', 10) === 0) {
+        card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+      }
+
+      generarPedido(); // 🔥 sync UI
     });
   });
 
+  const btnEnviar = document.getElementById('btnEnviarPedido');
+  if (btnEnviar) btnEnviar.addEventListener('click', enviarPedido);
 });
