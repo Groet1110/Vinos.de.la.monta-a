@@ -1,111 +1,241 @@
+/* ═══════════════════════════════════════════════════════
+   NAV Y MENÚ
+══════════════════════════════════════════════════════════════ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+});
 
-    /* ── NAV scroll ── */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    });
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-    /* ── Hamburger móvil ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open');
-    });
-    function closeMobile() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    }
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+}
 
-    /* ── Reveal on scroll ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 80);
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
+function closeMobile() {
+  hamburger?.classList.remove('open');
+  mobileMenu?.classList.remove('open');
+}
 
-    /* ── Selector de presentación en cada card ── */
-    function selecPres(btn) {
-      const grupo = btn.closest('.wine-presentacion');
-      grupo.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
+/* ═══════════════════════════════════════════════════════
+   ANIMACIONES
+══════════════════════════════════════════════════════════════ */
+const reveals = document.querySelectorAll('.reveal');
 
-    /* ── Contador +/- en cada card ── */
-    function cambiarQty(btn, delta) {
-      const input = btn.closest('.qty-control').querySelector('.qty-val');
-      const nuevo = Math.max(1, parseInt(input.value || 1) + delta);
-      input.value = nuevo;
-    }
-
-    /* ── Al hacer clic en "Pedir →" desde una card ── */
-    function seleccionarDesdeCard(btnPedir, nombreVino) {
-      const card = btnPedir.closest('.wine-card');
-
-      // Presentación activa
-      const presActiva = card.querySelector('.pres-btn.active');
-      const presLabel  = presActiva ? presActiva.querySelector('.pres-label').textContent : 'Botella';
-      const presUnidad = presActiva ? presActiva.querySelector('.pres-unidades').textContent : '1 unidad';
-
-      // Cantidad
-      const qty = card.querySelector('.qty-val').value || '1';
-
-      // Llenar formulario
-      setTimeout(() => {
-        // Vino
-        const sel = document.getElementById('vino');
-        for (let i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].value === nombreVino) { sel.selectedIndex = i; break; }
-        }
-        // Presentación
-        const selPres = document.getElementById('presentacion');
-        const textosPres = {
-          'Botella':    'Botella suelta (1 unidad)',
-          'Media caja': 'Media caja (6 botellas)',
-          'Caja':       'Caja (12 botellas)',
-        };
-        const target = textosPres[presLabel] || 'Botella suelta (1 unidad)';
-        for (let i = 0; i < selPres.options.length; i++) {
-          if (selPres.options[i].value === target) { selPres.selectedIndex = i; break; }
-        }
-        // Cantidad
-        document.getElementById('cantidad').value = qty;
-      }, 350);
-    }
-
-    /* ── Enviar pedido por WhatsApp ── */
-    function enviarPedido() {
-      const nombre       = document.getElementById('nombre').value.trim();
-      const telefono     = document.getElementById('telefono').value.trim();
-      const ciudad       = document.getElementById('ciudad').value.trim();
-      const vino         = document.getElementById('vino').value;
-      const presentacion = document.getElementById('presentacion').value;
-      const cantidad     = document.getElementById('cantidad').value;
-      const mensaje      = document.getElementById('mensaje').value.trim();
-
-      if (!nombre || !telefono || !ciudad || !vino) {
-        alert('Por favor completa los campos obligatorios: nombre, teléfono, ciudad y vino.');
-        return;
+if (reveals.length > 0) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 80);
+        observer.unobserve(entry.target);
       }
+    });
+  }, { threshold: 0.12 });
 
-      const texto = `¡Hola! Quiero hacer un pedido 🍷
+  reveals.forEach(el => observer.observe(el));
+}
 
-*Nombre:* ${nombre}
-*Teléfono:* ${telefono}
-*Ciudad:* ${ciudad}
-*Vino:* ${vino}
-*Presentación:* ${presentacion}
-*Cantidad:* ${cantidad}${mensaje ? `\n*Notas:* ${mensaje}` : ''}
+/* ═══════════════════════════════════════════════════════
+   UTILIDADES
+══════════════════════════════════════════════════════════════ */
 
-_Enviado desde vinosdelamontana.com_`;
+function getPackSizeFromCard(card) {
+  const presActiva = card?.querySelector('.pres-btn.active');
+  if (!presActiva) return 1;
 
-      // 👉 CAMBIA este número por el tuyo (sin + ni espacios)
-      const numero = '573000000000';
-      const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-      window.open(url, '_blank');
+  const label = presActiva.querySelector('.pres-label')?.textContent?.toLowerCase() || '';
+
+  if (label.includes('media')) return 6;
+  if (label.includes('caja')) return 12;
+
+  return 1;
+}
+
+function getActivePresentation(card) {
+  const presActiva = card?.querySelector('.pres-btn.active');
+  if (!presActiva) return 'botella';
+
+  return presActiva.querySelector('.pres-label')?.textContent?.trim() || 'botella';
+}
+
+function pluralizar(text, cantidad) {
+  if (cantidad <= 1) return text;
+  if (text === 'botella') return 'botellas';
+
+  const parts = text.split(' ');
+  const last = parts.pop();
+  parts.push(last.endsWith('s') ? last : last + 's');
+  return parts.join(' ');
+}
+
+/* ═══════════════════════════════════════════════════════
+   PRESENTACIÓN
+══════════════════════════════════════════════════════════════ */
+function selecPres(btn) {
+  const card = btn.closest('.wine-card');
+  const qtyInput = card.querySelector('.qty-val');
+
+  if (btn.classList.contains('active')) {
+    card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+    qtyInput.value = 0;
+  } else {
+    card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    if (parseInt(qtyInput.value) === 0) {
+      qtyInput.value = 1;
     }
+  }
+
+  generarPedido();
+}
+
+/* ═══════════════════════════════════════════════════════
+   CONTADOR
+══════════════════════════════════════════════════════════════ */
+function cambiarQty(btn, delta) {
+  const input = btn.closest('.qty-control').querySelector('.qty-val');
+  let valor = parseInt(input.value || 0);
+
+  valor = Math.max(0, valor + delta);
+  input.value = valor;
+
+  generarPedido();
+}
+
+/* ═══════════════════════════════════════════════════════
+   GENERAR PEDIDO
+══════════════════════════════════════════════════════════════ */
+function generarPedido() {
+  const cards = document.querySelectorAll('.wine-card');
+  const lista = document.getElementById('listaPedido');
+
+  lista.innerHTML = '';
+
+  cards.forEach(card => {
+    const nombre = card.dataset.nombre;
+    const qtyInput = card.querySelector('.qty-val');
+
+    let rawQty = parseInt(qtyInput.value || '0');
+    const presActiva = card.querySelector('.pres-btn.active');
+
+    if (presActiva && rawQty === 0) {
+      rawQty = 1;
+    }
+
+    if (!presActiva && rawQty <= 0) return;
+
+    const pack = getPackSizeFromCard(card);
+    const totalBotellas = rawQty * pack;
+
+    let presentacion = getActivePresentation(card);
+    presentacion = pluralizar(presentacion, rawQty);
+
+    const li = document.createElement('li');
+
+    li.innerHTML = `
+      <span>${rawQty} ${presentacion} ${nombre} (${totalBotellas} botellas)</span>
+      <button class="btn-remove" onclick="eliminarItem(this)">✕</button>
+    `;
+
+    lista.appendChild(li);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   ELIMINAR ITEM
+══════════════════════════════════════════════════════════════ */
+function eliminarItem(btn) {
+  const li = btn.closest('li');
+  const texto = li.querySelector('span').textContent;
+
+  const cards = document.querySelectorAll('.wine-card');
+
+  cards.forEach(card => {
+    const nombre = card.dataset.nombre;
+
+    if (texto.includes(nombre)) {
+      const qty = card.querySelector('.qty-val');
+      if (qty) qty.value = 0;
+
+      card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+    }
+  });
+
+  li.remove();
+  generarPedido();
+}
+
+/* ═══════════════════════════════════════════════════════
+   WHATSAPP
+══════════════════════════════════════════════════════════════ */
+function enviarPedido() {
+  const nombre = document.getElementById('nombre')?.value.trim();
+  const telefono = document.getElementById('telefono')?.value.trim();
+  const ciudad = document.getElementById('ciudad')?.value.trim();
+  const direccion = document.getElementById('direccion')?.value.trim();
+  const mensaje = document.getElementById('mensaje')?.value.trim();
+
+  if (!nombre || !telefono || !ciudad || !direccion) {
+    alert('Completa todos los datos');
+    return;
+  }
+
+  generarPedido();
+
+  const items = document.querySelectorAll('#listaPedido li');
+
+  if (items.length === 0) {
+    alert('Agrega productos');
+    return;
+  }
+
+  let detalle = '';
+  items.forEach(i => detalle += `• ${i.innerText}\n`);
+
+  const texto = `Pedido 🍷
+Nombre: ${nombre}
+Teléfono: ${telefono}
+Ciudad: ${ciudad}
+Dirección: ${direccion}
+
+${detalle}
+
+${mensaje || ''}`;
+
+  const url = `https://wa.me/573134131758?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
+}
+
+/* ═══════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // limpiar cualquier selección inicial
+  document.querySelectorAll('.wine-card').forEach(card => {
+    card.querySelectorAll('.pres-btn').forEach(b => b.classList.remove('active'));
+
+    const qty = card.querySelector('.qty-val');
+    if (qty) qty.value = 0;
+  });
+
+  const btnEnviar = document.getElementById('btnEnviarPedido');
+  if (btnEnviar) {
+    btnEnviar.addEventListener('click', enviarPedido);
+  }
+
+  document.querySelectorAll('.qty-val').forEach(inp => {
+    inp.addEventListener('input', () => {
+      if (inp.value < 0) inp.value = 0;
+      generarPedido();
+    });
+  });
+
+});

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vinos de la Montaña</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css">
 
   <!-- ═══ NAV ═══ -->
@@ -55,10 +58,12 @@
       <h2 class="section-title">Pasión por el vino,<br><em>directamente</em> a ti</h2>
       <p>
         <!-- 👉 EDITA este texto con tu historia -->
-        Somos una microempresa nacida del amor por los buenos vinos. Desde las montañas colombianas seleccionamos cada botella con cuidado, buscando ese equilibrio entre calidad y precio que merece cada mesa.
+        Somos una microempresa nacida del amor por los buenos vinos. Desde las montañas colombianas seleccionamos cada
+        botella con cuidado, buscando ese equilibrio entre calidad y precio que merece cada mesa.
       </p>
       <p>
-        Trabajamos directamente con productores para traerte vinos excepcionales en cajas de 24 botellas, ideales para hogares, restaurantes y eventos especiales.
+        Trabajamos directamente con productores para traerte vinos excepcionales en cajas de 24 botellas, ideales para
+        hogares, restaurantes y eventos especiales.
       </p>
       <div class="stats">
         <div>
@@ -66,12 +71,17 @@
           <div class="stat-label">Variedades seleccionadas</div>
         </div>
         <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Media caja</div>
+        </div>
+
+        <div>
           <div class="stat-num">24</div>
           <div class="stat-label">Botellas por caja</div>
         </div>
         <div>
           <div class="stat-num">🍷</div>
-          <div class="stat-label">Envíos a todo el país</div>
+          <div class="stat-label">Envíos a toda el area metropolitana</div>
         </div>
       </div>
     </div>
@@ -87,141 +97,133 @@
   </section>
 
   <!-- ═══ CATÁLOGO ═══ -->
-  <section id="catalogo">
-    <div class="catalogo-header reveal">
-      <span class="section-label">Nuestra selección</span>
-      <h2 class="section-title" style="text-align:center">Los vinos</h2>
+<section id="catalogo">
+  <div class="catalogo-header reveal">
+    <span class="section-label">Nuestra selección</span>
+    <h2 class="section-title" style="text-align:center">Los vinos</h2>
+  </div>
+
+  <div class="wines-grid">
+
+    <!-- ── VINO 1 ── -->
+    <div class="wine-card reveal" data-nombre="Nombre del Vino 1">
+      <div class="wine-img-wrap">
+        <div class="wine-img-placeholder"><span>🍷</span>img/vino1.jpg</div>
+      </div>
+
+      <div class="wine-body">
+        <p class="wine-tipo">Tinto · Cabernet Sauvignon</p>
+        <h3 class="wine-name">Nombre del Vino 1</h3>
+        <p class="wine-desc">
+          Notas de frutos rojos maduros, taninos suaves y un final largo y elegante.
+        </p>
+
+        <div class="wine-presentacion">
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Media caja</span>
+            <span class="pres-unidades">6 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
+
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Caja</span>
+            <span class="pres-unidades">12 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
+        </div>
+
+        <div class="wine-footer">
+          <div class="qty-control">
+            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+            <input class="qty-val" type="number" value="0" min="0">
+            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="wines-grid">
 
-      <!-- ── VINO 1 ── 👉 Edita nombre, descripción, precios y foto -->
-      <div class="wine-card reveal">
-        <div class="wine-img-wrap">
-          <!--
-            Con foto: <img class="wine-img" src="img/vino1.jpg" alt="Nombre del vino" />
-            Sin foto (placeholder):
-          -->
-          <div class="wine-img-placeholder"><span>🍷</span>img/vino1.jpg</div>
+    <!-- ── VINO 2 ── -->
+    <div class="wine-card reveal" data-nombre="Nombre del Vino 2">
+      <div class="wine-img-wrap">
+        <div class="wine-img-placeholder"><span>🥂</span>img/vino2.jpg</div>
+      </div>
+
+      <div class="wine-body">
+        <p class="wine-tipo">Blanco · Chardonnay</p>
+        <h3 class="wine-name">Nombre del Vino 2</h3>
+        <p class="wine-desc">
+          Fresco y afrutado, con toques de manzana verde y durazno.
+        </p>
+
+        <div class="wine-presentacion">
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Media caja</span>
+            <span class="pres-unidades">6 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
+
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Caja</span>
+            <span class="pres-unidades">12 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
         </div>
-        <div class="wine-body">
-          <p class="wine-tipo">Tinto · Cabernet Sauvignon</p>
-          <h3 class="wine-name">Nombre del Vino 1</h3>
-          <p class="wine-desc">Notas de frutos rojos maduros, taninos suaves y un final largo y elegante. Ideal para carnes y quesos curados.</p>
 
-          <!-- Selector de presentación -->
-          <div class="wine-presentacion" data-vino="1">
-            <button class="pres-btn active" data-pres="botella" onclick="selecPres(this)">
-              <span class="pres-label">Botella</span>
-              <span class="pres-unidades">1 unidad</span>
-              <!-- 👉 Reemplaza el texto con tu precio: ej. $18.000 -->
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="media" onclick="selecPres(this)">
-              <span class="pres-label">Media caja</span>
-              <span class="pres-unidades">6 botellas</span>
-              <!-- 👉 Reemplaza: ej. $95.000 -->
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="caja" onclick="selecPres(this)">
-              <span class="pres-label">Caja</span>
-              <span class="pres-unidades">12 botellas</span>
-              <!-- 👉 Reemplaza: ej. $180.000 -->
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-          </div>
-
-          <div class="wine-footer">
-            <div class="qty-control">
-              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-              <input class="qty-val" type="number" value="1" min="1" max="99" />
-              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
-            </div>
-            <a href="#pedido" class="btn-pedir" onclick="seleccionarDesdeCard(this, 'Nombre del Vino 1')">Pedir →</a>
+        <div class="wine-footer">
+          <div class="qty-control">
+            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+            <input class="qty-val" type="number" value="0" min="0">
+            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
           </div>
         </div>
       </div>
-
-      <!-- ── VINO 2 ── -->
-      <div class="wine-card reveal">
-        <div class="wine-img-wrap">
-          <div class="wine-img-placeholder"><span>🥂</span>img/vino2.jpg</div>
-        </div>
-        <div class="wine-body">
-          <p class="wine-tipo">Blanco · Chardonnay</p>
-          <h3 class="wine-name">Nombre del Vino 2</h3>
-          <p class="wine-desc">Fresco y afrutado, con toques de manzana verde y durazno. Perfecto para mariscos, ensaladas y momentos ligeros.</p>
-
-          <div class="wine-presentacion" data-vino="2">
-            <button class="pres-btn active" data-pres="botella" onclick="selecPres(this)">
-              <span class="pres-label">Botella</span>
-              <span class="pres-unidades">1 unidad</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="media" onclick="selecPres(this)">
-              <span class="pres-label">Media caja</span>
-              <span class="pres-unidades">6 botellas</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="caja" onclick="selecPres(this)">
-              <span class="pres-label">Caja</span>
-              <span class="pres-unidades">12 botellas</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-          </div>
-
-          <div class="wine-footer">
-            <div class="qty-control">
-              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-              <input class="qty-val" type="number" value="1" min="1" max="99" />
-              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
-            </div>
-            <a href="#pedido" class="btn-pedir" onclick="seleccionarDesdeCard(this, 'Nombre del Vino 2')">Pedir →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── VINO 3 ── -->
-      <div class="wine-card reveal">
-        <div class="wine-img-wrap">
-          <div class="wine-img-placeholder"><span>🌹</span>img/vino3.jpg</div>
-        </div>
-        <div class="wine-body">
-          <p class="wine-tipo">Rosado · Merlot Rosé</p>
-          <h3 class="wine-name">Nombre del Vino 3</h3>
-          <p class="wine-desc">Vibrante y delicado, con aromas florales y fruta fresca. El acompañante ideal para reuniones y celebraciones.</p>
-
-          <div class="wine-presentacion" data-vino="3">
-            <button class="pres-btn active" data-pres="botella" onclick="selecPres(this)">
-              <span class="pres-label">Botella</span>
-              <span class="pres-unidades">1 unidad</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="media" onclick="selecPres(this)">
-              <span class="pres-label">Media caja</span>
-              <span class="pres-unidades">6 botellas</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-            <button class="pres-btn" data-pres="caja" onclick="selecPres(this)">
-              <span class="pres-label">Caja</span>
-              <span class="pres-unidades">12 botellas</span>
-              <span class="pres-precio pendiente">Pronto</span>
-            </button>
-          </div>
-
-          <div class="wine-footer">
-            <div class="qty-control">
-              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-              <input class="qty-val" type="number" value="1" min="1" max="99" />
-              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
-            </div>
-            <a href="#pedido" class="btn-pedir" onclick="seleccionarDesdeCard(this, 'Nombre del Vino 3')">Pedir →</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
 
+    <!-- ── VINO 3 ── -->
+    <div class="wine-card reveal" data-nombre="Nombre del Vino 3">
+      <div class="wine-img-wrap">
+        <div class="wine-img-placeholder"><span>🌹</span>img/vino3.jpg</div>
+      </div>
+
+      <div class="wine-body">
+        <p class="wine-tipo">Rosado · Merlot Rosé</p>
+        <h3 class="wine-name">Nombre del Vino 3</h3>
+        <p class="wine-desc">
+          Vibrante y delicado, con aromas florales y fruta fresca.
+        </p>
+
+        <div class="wine-presentacion">
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Media caja</span>
+            <span class="pres-unidades">6 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
+
+          <button class="pres-btn" onclick="selecPres(this)">
+            <span class="pres-label">Caja</span>
+            <span class="pres-unidades">12 botellas</span>
+            <span class="pres-precio pendiente">Pronto</span>
+          </button>
+        </div>
+
+        <div class="wine-footer">
+          <div class="qty-control">
+            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+            <input class="qty-val" type="number" value="0" min="0">
+            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="catalogo-cta">
+    <a href="#pedido" class="btn-primary" onclick="generarPedido()">
+      Ver pedido →
+    </a>
+  </div>
+</section>
   <!-- ═══ CÓMO FUNCIONA ═══ -->
   <section id="como">
     <div class="como-header reveal">
@@ -232,7 +234,8 @@
       <div class="step reveal">
         <div class="step-num">1</div>
         <h3 class="step-title">Elige tu vino</h3>
-        <p class="step-desc">Explora el catálogo y selecciona la variedad que más te guste. Puedes pedir una o varias cajas.</p>
+        <p class="step-desc">Explora el catálogo y selecciona la variedad que más te guste. Puedes pedir una o varias
+          cajas.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">2</div>
@@ -242,7 +245,8 @@
       <div class="step reveal">
         <div class="step-num">3</div>
         <h3 class="step-title">Te contactamos</h3>
-        <p class="step-desc">Tu pedido llega directo a nuestro WhatsApp. Te confirmamos disponibilidad y método de pago.</p>
+        <p class="step-desc">Tu pedido llega directo a nuestro WhatsApp. Te confirmamos disponibilidad y método de pago.
+        </p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
@@ -258,7 +262,8 @@
       <p class="section-label">Contáctanos</p>
       <h2 class="section-title">Haz tu <em>pedido</em></h2>
       <p>
-        Completa el formulario y en segundos llegará un mensaje a nuestro WhatsApp con todos los detalles. Te respondemos en menos de 24 horas.
+        Completa el formulario y en segundos llegará un mensaje a nuestro WhatsApp con todos los detalles. Te
+        respondemos en menos de 24 horas.
       </p>
       <div class="contacto-item">
         <div class="contacto-icon">📱</div>
@@ -280,60 +285,47 @@
       </div>
     </div>
 
-    <div class="form-card reveal">
-      <h3 class="form-title">Formulario de pedido</h3>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" placeholder="Tu nombre" />
-        </div>
-        <div class="form-group">
-          <label for="telefono">Teléfono / WhatsApp</label>
-          <input type="tel" id="telefono" placeholder="+57 300..." />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="ciudad">Ciudad de entrega</label>
-        <input type="text" id="ciudad" placeholder="Ej: Medellín, Bogotá..." />
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="vino">Vino de interés</label>
-          <select id="vino">
-            <option value="">Selecciona...</option>
-            <!-- 👉 Actualiza con tus nombres reales -->
-            <option value="Nombre del Vino 1">Nombre del Vino 1 (Tinto)</option>
-            <option value="Nombre del Vino 2">Nombre del Vino 2 (Blanco)</option>
-            <option value="Nombre del Vino 3">Nombre del Vino 3 (Rosado)</option>
-            <option value="Varios">Varios / Mixto</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="presentacion">Presentación</label>
-          <select id="presentacion">
-            <option value="Botella suelta (1 unidad)">Botella suelta (1 unidad)</option>
-            <option value="Media caja (6 botellas)">Media caja (6 botellas)</option>
-            <option value="Caja (12 botellas)">Caja (12 botellas)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="cantidad">Cantidad</label>
-        <input type="number" id="cantidad" min="1" value="1" placeholder="¿Cuántas unidades de esa presentación?" />
-      </div>
-      <div class="form-group">
-        <label for="mensaje">Mensaje adicional (opcional)</label>
-        <textarea id="mensaje" placeholder="¿Fecha especial, dirección, alguna duda?"></textarea>
-      </div>
-      <button class="btn-enviar" onclick="enviarPedido()">
-        <!-- Ícono WhatsApp SVG -->
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Enviar pedido por WhatsApp
-      </button>
-      <p class="form-note">Tu información solo se usará para procesar tu pedido.</p>
+   <div class="form-card reveal">
+  <h3 class="form-title">Formulario de pedido</h3>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Tu nombre" />
     </div>
+    <div class="form-group">
+      <label for="telefono">Teléfono / WhatsApp</label>
+      <input type="tel" id="telefono" placeholder="+57 300..." />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ciudad">Ciudad de entrega</label>
+    <input type="text" id="ciudad" placeholder="Ej: Medellín, Bogotá..." />
+  </div>
+  <!-- DIRECCIÓN (nuevo) -->
+  <div class="form-group">
+    <label for="direccion">Dirección de entrega</label>
+    <input type="text" id="direccion" placeholder="Calle, número, barrio, referencia" />
+  </div>
+  <!-- HE QUITADO: Vino de interés / Presentación -->
+   <!-- Lista numerada -->
+  <div class="cuadro-pedido">
+    <ul id="listaPedido">
+      <li class="pedido-vacio">Agrega vinos desde el catálogo ↑</li>
+    </ul>
+  </div>
+  
+  <div class="form-group">
+    <label for="mensaje">Mensaje adicional (opcional)</label>
+    <textarea id="mensaje" placeholder="¿Fecha especial, dirección, alguna duda?"></textarea>
+  </div>
+  <!-- eliminar onclick inline para evitar problemas; añadir id para bind en JS -->
+  <button id="btnEnviarPedido" class="btn-enviar" type="button">
+    <!-- Ícono WhatsApp SVG (igual que tú tienes) -->
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">...</svg>
+    Enviar pedido por WhatsApp
+  </button>
+  <p class="form-note">Tu información solo se usará para procesar tu pedido.</p>
+</div>
   </section>
 
   <!-- ═══ FOOTER ═══ -->
@@ -375,6 +367,7 @@
     </div>
   </footer>
 
-<script src="js/script.js"></script>
-</body>
+  <script src="js/script.js"></script>
+  </body>
+
 </html>
