@@ -335,6 +335,24 @@ nav.scrolled {
   margin-top: .3rem;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ── CATÁLOGO ── */
 #catalogo {
   padding: 7rem 8%;
@@ -353,34 +371,45 @@ nav.scrolled {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: stretch;
 }
 .wine-card {
   background: var(--white);
   border-radius: 2px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   transition: transform .3s, box-shadow .3s;
 }
 .wine-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(92,26,26,0.12);
 }
-.wine-img-wrap { overflow: hidden; }
-.wine-img-placeholder {
-  width: 100%;
-  height: 280px;
-  background: var(--cream-dk);
+.wine-img-wrap {
+  overflow: hidden;
+  height: 300px;
+  flex-shrink: 0;
+  background: linear-gradient(160deg, #1a0f0f 0%, #2e1010 60%, #3d1a1a 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
-  color: var(--text-lt);
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
 }
-.wine-img-placeholder span { font-size: 2.5rem; }
-
-.wine-body { padding: 1.5rem 1.5rem 1.8rem; }
+.wine-img-wrap img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform .4s ease;
+}
+.wine-card:hover .wine-img-wrap img {
+  transform: scale(1.04) translateY(-4px);
+}
+.wine-body {
+  flex: 1;
+  padding: 1.4rem 1.4rem 1.2rem;
+}
 .wine-tipo {
   font-size: 0.68rem;
   font-weight: 500;
@@ -409,13 +438,18 @@ nav.scrolled {
   display: flex;
   gap: .4rem;
   margin-bottom: 1rem;
+  justify-content: center; /* evita que se estire raro */
+  flex-wrap: wrap; /* por si luego agregas más opciones */
 }
+
 .pres-btn {
-  flex: 1;
+  flex: 0 0 auto; /* 👈 evita que se estire */
+  min-width: 160px; /* tamaño base */
+  max-width: 160px; /* opcional, mantiene proporción */
   border: 1px solid var(--cream-dk);
   background: var(--white);
   border-radius: 2px;
-  padding: 8px 6px;
+  padding: 12px 10px;
   cursor: pointer;
   text-align: center;
   transition: border-color .2s, background .2s;
@@ -506,6 +540,26 @@ nav.scrolled {
   text-align: right;
   transition: opacity .2s;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ── CÓMO FUNCIONA ── */
 #como {
