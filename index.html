@@ -76,7 +76,7 @@
           <div class="stat-label">Media caja</div>
         </div>
         -->
-       
+
 
         <div>
           <div class="stat-num">24</div>
@@ -89,38 +89,39 @@
       </div>
     </div>
     <div class="nosotros-img reveal">
-    
-      <img src="./img/Portada.png" alt="Vinos de la Montaña"/>
+
+      <img src="./img/Portada.png" alt="Vinos de la Montaña" />
     </div>
   </section>
 
   <!-- ═══ CATÁLOGO ═══ -->
-<section id="catalogo">
-  <div class="catalogo-header reveal">
-    <span class="section-label">Nuestra selección</span>
-    <h2 class="section-title" style="text-align:center">Los vinos</h2>
-  </div>
+  <section id="catalogo">
+    <div class="catalogo-header reveal">
+      <span class="section-label">Nuestra selección</span>
+      <h2 class="section-title" style="text-align:center">Los vinos</h2>
+    </div>
 
-  <div class="wines-grid">
+    <div class="wines-grid">
 
-    <!-- ── VINO 1 ── -->
-    <div class="wine-card reveal" data-nombre="Nombre del Vino 1">
-      <div class="wine-img-wrap">
-        <img src="./img/Vino1.png" alt="Vino Mora" class="wine-img"/>
-      </div>
+      <!-- ── VINO 1 ── -->
+      <div class="wine-card reveal" data-nombre="Nombre del Vino 1">
+        <div class="wine-img-wrap">
+          <img src="./img/Vino1.png" alt="Vino Mora" class="wine-img" />
+        </div>
 
-      <div class="wine-body">
-        <p class="wine-tipo"></p>
-        <h3 class="wine-name">Mora</h3>
-        <p class="wine-desc">
-           Vino tinto con notas intensas de mora madura, cuerpo suave y un final delicado que lo hace perfecto para cualquier ocasión
-        </p>
+        <div class="wine-body">
+          <p class="wine-tipo"></p>
+          <h3 class="wine-name">Mora</h3>
+          <p class="wine-desc">
+            Vino tinto con notas intensas de mora madura, cuerpo suave y un final delicado que lo hace perfecto para
+            cualquier ocasión
+          </p>
 
-        <!-- 🔧 CONTENEDOR SIEMPRE ACTIVO -->
-        <div class="wine-presentacion">
+          <!-- 🔧 CONTENEDOR SIEMPRE ACTIVO -->
+          <div class="wine-presentacion">
 
-          <!-- OPCIÓN FUTURA -->
-          <!--
+            <!-- OPCIÓN FUTURA -->
+            <!--
           <button class="pres-btn" onclick="selecPres(this)">
             <span class="pres-label">Media caja</span>
             <span class="pres-unidades">6 botellas</span>
@@ -128,41 +129,50 @@
           </button>
           -->
 
-          <!-- OPCIÓN ACTUAL -->
-          <button class="pres-btn" onclick="selecPres(this)">
-            <span class="pres-label">Caja</span>
-            <span class="pres-unidades">12 botellas</span>
-            <span class="pres-precio pendiente">Pronto</span>
-          </button>
+            <!-- OPCIÓN ACTUAL -->
+            <button class="pres-btn" onclick="selecPres(this)">
+              <span class="pres-label">Caja</span>
+              <span class="pres-unidades">12 botellas</span>
+              <span class="pres-precio pendiente">$240.000</span>
+            </button>
 
-        </div>
-
-        <div class="wine-footer">
-          <div class="qty-control">
-            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-            <input class="qty-val" type="number" value="0" min="0">
-            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
           </div>
+
+          <div class="wine-footer">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+              <input class="qty-val" type="number" value="0" min="0">
+              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
+            </div>
+            <!--Precio unitario-->
+            <div class="precio-unitario">
+              $30.000 <span>/ botella</span>
+            </div>
+
+          </div>
+
+
+
         </div>
       </div>
-    </div>
 
-    <!-- ── VINO 2 ── -->
-    <div class="wine-card reveal" data-nombre="Nombre del Vino 2">
-      <div class="wine-img-wrap">
-        <div class="wine-img-placeholder"><span>🥂</span>img/vino2.jpg</div>
-      </div>
+      <!-- ── VINO 2 ── -->
+      <div class="wine-card reveal" data-nombre="Nombre del Vino 2">
+        <div class="wine-img-wrap">
+          <img src="./img/Vino2.png" alt="Vino Uva" class="wine-img" />
+        </div>
 
-      <div class="wine-body">
-        <p class="wine-tipo">Blanco · Chardonnay</p>
-        <h3 class="wine-name">Nombre del Vino 2</h3>
-        <p class="wine-desc">
-          Fresco y afrutado, con toques de manzana verde y durazno.
-        </p>
+        <div class="wine-body">
+          <p class="wine-tipo"></p>
+          <h3 class="wine-name">Uva</h3>
+          <p class="wine-desc">
+            Vino tinto con aromas frescos de uva madura, notas frutales equilibradas, cuerpo ligero y agradable, y un
+            final suave que lo convierte en una excelente opción para compartir en cualquier ocasión.
+          </p>
 
-        <div class="wine-presentacion">
+          <div class="wine-presentacion">
 
-          <!--
+            <!--
           <button class="pres-btn" onclick="selecPres(this)">
             <span class="pres-label">Media caja</span>
             <span class="pres-unidades">6 botellas</span>
@@ -170,40 +180,49 @@
           </button>
           -->
 
-          <button class="pres-btn" onclick="selecPres(this)">
-            <span class="pres-label">Caja</span>
-            <span class="pres-unidades">12 botellas</span>
-            <span class="pres-precio pendiente">Pronto</span>
-          </button>
+            <button class="pres-btn" onclick="selecPres(this)">
+              <span class="pres-label">Caja</span>
+              <span class="pres-unidades">12 botellas</span>
+              <span class="pres-precio pendiente">$240.000</span>
+            </button>
 
-        </div>
-
-        <div class="wine-footer">
-          <div class="qty-control">
-            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-            <input class="qty-val" type="number" value="0" min="0">
-            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
           </div>
+
+          <div class="wine-footer">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+              <input class="qty-val" type="number" value="0" min="0">
+              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
+            </div>
+            <!--Precio unitario-->
+            <div class="precio-unitario">
+              $30.000 <span>/ botella</span>
+            </div>
+          </div>
+
+          <!--Precio unitario-->
+
+
         </div>
       </div>
-    </div>
 
-    <!-- ── VINO 3 ── -->
-    <div class="wine-card reveal" data-nombre="Nombre del Vino 3">
-      <div class="wine-img-wrap">
-        <div class="wine-img-placeholder"><span>🌹</span>img/vino3.jpg</div>
-      </div>
+      <!-- ── VINO 3 ── -->
+      <div class="wine-card reveal" data-nombre="Nombre del Vino 3">
+        <div class="wine-img-wrap">
+          <img src="./img/Vino3.png" alt="Vino Rosado" class="wine-img" />
+        </div>
 
-      <div class="wine-body">
-        <p class="wine-tipo">Rosado · Merlot Rosé</p>
-        <h3 class="wine-name">Nombre del Vino 3</h3>
-        <p class="wine-desc">
-          Vibrante y delicado, con aromas florales y fruta fresca.
-        </p>
+        <div class="wine-body">
+          <p class="wine-tipo"></p>
+          <h3 class="wine-name">Cafe</h3>
+          <p class="wine-desc">
+            Vino tinto con aromas profundos de café tostado, notas suaves de cacao y vainilla, cuerpo medio y textura
+            sedosa, con un final cálido y envolvente que invita a disfrutarlo lentamente en cualquier momento especial.
+          </p>
 
-        <div class="wine-presentacion">
+          <div class="wine-presentacion">
 
-          <!--
+            <!--
           <button class="pres-btn" onclick="selecPres(this)">
             <span class="pres-label">Media caja</span>
             <span class="pres-unidades">6 botellas</span>
@@ -211,32 +230,40 @@
           </button>
           -->
 
-          <button class="pres-btn" onclick="selecPres(this)">
-            <span class="pres-label">Caja</span>
-            <span class="pres-unidades">12 botellas</span>
-            <span class="pres-precio pendiente">Pronto</span>
-          </button>
+            <button class="pres-btn" onclick="selecPres(this)">
+              <span class="pres-label">Caja</span>
+              <span class="pres-unidades">12 botellas</span>
+              <span class="pres-precio pendiente">$240.000</span>
+            </button>
 
-        </div>
-
-        <div class="wine-footer">
-          <div class="qty-control">
-            <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
-            <input class="qty-val" type="number" value="0" min="0">
-            <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
           </div>
+
+          <div class="wine-footer">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="cambiarQty(this, -1)">−</button>
+              <input class="qty-val" type="number" value="0" min="0">
+              <button class="qty-btn" onclick="cambiarQty(this, 1)">+</button>
+            </div>
+
+            <!--precio unitario-->
+            <div class="precio-unitario">
+              $30.000 <span>/ botella</span>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
+
     </div>
 
-  </div>
-
-  <div class="catalogo-cta">
-    <a href="#pedido" class="btn-primary" onclick="generarPedido()">
-      Ver pedido →
-    </a>
-  </div>
-</section>
+    <div class="catalogo-cta">
+      <a href="#pedido" class="btn-primary" onclick="generarPedido()">
+        Ver pedido →
+      </a>
+    </div>
+  </section>
   <!-- ═══ CÓMO FUNCIONA ═══ -->
   <section id="como">
     <div class="como-header reveal">
@@ -245,24 +272,24 @@
     </div>
     <div class="steps-grid">
       <div class="step reveal">
-        <div class="step-num">1</div>
+        <div class="step-num">I</div>
         <h3 class="step-title">Elige tu vino</h3>
         <p class="step-desc">Explora el catálogo y selecciona la variedad que más te guste. Puedes pedir una o varias
           cajas.</p>
       </div>
       <div class="step reveal">
-        <div class="step-num">2</div>
+        <div class="step-num">II</div>
         <h3 class="step-title">Llena el formulario</h3>
         <p class="step-desc">Ingresa tu nombre, teléfono, ciudad y la cantidad de cajas. Solo toma un minuto.</p>
       </div>
       <div class="step reveal">
-        <div class="step-num">3</div>
+        <div class="step-num">III</div>
         <h3 class="step-title">Te contactamos</h3>
         <p class="step-desc">Tu pedido llega directo a nuestro WhatsApp. Te confirmamos disponibilidad y método de pago.
         </p>
       </div>
       <div class="step reveal">
-        <div class="step-num">4</div>
+        <div class="step-num">IV</div>
         <h3 class="step-title">Recibe en casa</h3>
         <p class="step-desc">Coordinamos el envío a tu ciudad. Aceptamos transferencia, Nequi y pago contra entrega.</p>
       </div>
@@ -281,11 +308,11 @@
       <div class="contacto-item">
         <div class="contacto-icon">📱</div>
         <!-- 👉 Cambia el número -->
-        <span>+57 300 000 0000 · WhatsApp</span>
+        <span>+57 350 784 04 68 · WhatsApp</span>
       </div>
       <div class="contacto-item">
         <div class="contacto-icon">📦</div>
-        <span>Envíos a toda Colombia</span>
+        <span>Envíos a toda el area metropólitana</span>
       </div>
       <div class="contacto-item">
         <div class="contacto-icon">💳</div>
@@ -298,47 +325,47 @@
       </div>
     </div>
 
-   <div class="form-card reveal">
-  <h3 class="form-title">Formulario de pedido</h3>
-  <div class="form-row">
-    <div class="form-group">
-      <label for="nombre">Nombre completo</label>
-      <input type="text" id="nombre" placeholder="Tu nombre" />
+    <div class="form-card reveal">
+      <h3 class="form-title">Formulario de pedido</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono / WhatsApp</label>
+          <input type="tel" id="telefono" placeholder="+57 300..." />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ciudad">Ciudad de entrega</label>
+        <input type="text" id="ciudad" placeholder="Ej: Rionegro..." />
+      </div>
+      <!-- DIRECCIÓN (nuevo) -->
+      <div class="form-group">
+        <label for="direccion">Dirección de entrega</label>
+        <input type="text" id="direccion" placeholder="Calle, número, barrio, referencia" />
+      </div>
+      <!-- HE QUITADO: Vino de interés / Presentación -->
+      <!-- Lista numerada -->
+      <div class="cuadro-pedido">
+        <ul id="listaPedido">
+          <li class="pedido-vacio">Agrega vinos desde el catálogo ↑</li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje adicional (opcional)</label>
+        <textarea id="mensaje" placeholder="¿Fecha especial, dirección, alguna duda?"></textarea>
+      </div>
+      <!-- eliminar onclick inline para evitar problemas; añadir id para bind en JS -->
+      <button id="btnEnviarPedido" class="btn-enviar" type="button">
+        <!-- Ícono WhatsApp SVG (igual que tú tienes) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">...</svg>
+        Enviar pedido por WhatsApp
+      </button>
+      <p class="form-note">Tu información solo se usará para procesar tu pedido.</p>
     </div>
-    <div class="form-group">
-      <label for="telefono">Teléfono / WhatsApp</label>
-      <input type="tel" id="telefono" placeholder="+57 300..." />
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="ciudad">Ciudad de entrega</label>
-    <input type="text" id="ciudad" placeholder="Ej: Medellín, Bogotá..." />
-  </div>
-  <!-- DIRECCIÓN (nuevo) -->
-  <div class="form-group">
-    <label for="direccion">Dirección de entrega</label>
-    <input type="text" id="direccion" placeholder="Calle, número, barrio, referencia" />
-  </div>
-  <!-- HE QUITADO: Vino de interés / Presentación -->
-   <!-- Lista numerada -->
-  <div class="cuadro-pedido">
-    <ul id="listaPedido">
-      <li class="pedido-vacio">Agrega vinos desde el catálogo ↑</li>
-    </ul>
-  </div>
-  
-  <div class="form-group">
-    <label for="mensaje">Mensaje adicional (opcional)</label>
-    <textarea id="mensaje" placeholder="¿Fecha especial, dirección, alguna duda?"></textarea>
-  </div>
-  <!-- eliminar onclick inline para evitar problemas; añadir id para bind en JS -->
-  <button id="btnEnviarPedido" class="btn-enviar" type="button">
-    <!-- Ícono WhatsApp SVG (igual que tú tienes) -->
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">...</svg>
-    Enviar pedido por WhatsApp
-  </button>
-  <p class="form-note">Tu información solo se usará para procesar tu pedido.</p>
-</div>
   </section>
 
   <!-- ═══ FOOTER ═══ -->
@@ -350,8 +377,8 @@
         <div class="social-links" style="margin-top:1.2rem">
           <!-- 👉 Cambia las URLs por tus perfiles reales -->
           <a href="https://instagram.com/vinosdelamontana" class="social-link" target="_blank" title="Instagram">IG</a>
-          <a href="https://tiktok.com/@vinosdelamontana" class="social-link" target="_blank" title="TikTok">TK</a>
-          <a href="https://wa.me/573000000000" class="social-link" target="_blank" title="WhatsApp">WA</a>
+          <a href="https://tiktok.com/@vinos.de.la.montana" class="social-link" target="_blank" title="TikTok">TK</a>
+          <a href="https://wa.me/573507840468" class="social-link" target="_blank" title="WhatsApp">WA</a>
         </div>
       </div>
       <div>
@@ -368,14 +395,14 @@
         <p class="footer-col-title">Contacto</p>
         <ul class="footer-links">
           <!-- 👉 Actualiza con tus datos -->
-          <li><a href="https://wa.me/573000000000">WhatsApp: +57 300 000 0000</a></li>
+          <li><a href="https://wa.me/573507840468">WhatsApp: +57 350 784 04 68 </a></li>
           <li><a href="https://instagram.com/vinosdelamontana">@vinosdelamontana</a></li>
           <li><a href="#">Rionegro, Antioquia</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Vinos de la Montaña · Todos los derechos reservados</span>
+      <span>© 2026 Vinos de la Montaña · Todos los derechos reservados</span>
       <span>Hecho con ❤️ en Colombia</span>
     </div>
   </footer>

@@ -490,13 +490,23 @@ nav.scrolled {
 
 /* Footer de la card: contador + total botellas */
 .wine-footer {
-  display: flex;
+ 
+ display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 1rem;
-  border-top: 1px solid var(--cream-dk);
-  gap: .8rem;
+  gap: 1rem;
+
 }
+
+
+.precio-unitario {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #3b3b3b;
+  white-space: nowrap;
+}
+
 .qty-control {
   display: flex;
   align-items: center;
