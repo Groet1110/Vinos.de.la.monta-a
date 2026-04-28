@@ -204,7 +204,7 @@ ${detalle}
 
 ${mensaje || ''}`;
 
-  const url = `https://wa.me/573134131758?text=${encodeURIComponent(texto)}`;
+  const url = `https://wa.me/573507840468?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
 }
 
