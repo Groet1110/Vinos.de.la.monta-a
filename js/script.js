@@ -190,19 +190,36 @@ function enviarPedido() {
   }
 
   let detalle = '';
-  items.forEach(i => {
-  detalle += `• ${i.querySelector('span').textContent}\n`;
+  
+
+
+
+items.forEach(i => {
+  const clon = i.cloneNode(true);
+  const btn = clon.querySelector('button');
+  if (btn) btn.remove();
+
+  const texto = clon.textContent.trim();
+  detalle += `• ${texto}\n`;
 });
 
-  const texto = `Pedido 🍷
+detalle = detalle.trim();
+
+
+
+
+
+
+
+const texto = `Pedido 🍷
 Nombre: ${nombre}
 Teléfono: ${telefono}
 Ciudad: ${ciudad}
 Dirección: ${direccion}
 
-${detalle}
+${detalle}${mensaje ? `\nDescripción: ${mensaje}` : ''}`;
 
-${mensaje || ''}`;
+
 
   const url = `https://wa.me/573507840468?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
