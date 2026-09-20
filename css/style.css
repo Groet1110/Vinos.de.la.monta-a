@@ -926,6 +926,7 @@ footer {
 /* ─────────────────────────────────────
    LISTA DE PEDIDO
 ──────────────────────────────────── */
+
 #listaPedido {
   list-style: none;
   margin-top: 10px;
@@ -936,6 +937,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   background: #F5F0E8;
   padding: 10px 14px;
   margin-bottom: 8px;
@@ -944,22 +946,44 @@ footer {
   border: 1px solid #e0d6c8;
 }
 
-/* Texto del producto */
-#listaPedido li span {
+/* Información del producto */
+#listaPedido .pedido-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Nombre y cantidad del producto */
+#listaPedido .pedido-info span {
   flex: 1;
   color: #3a2a2a;
+  line-height: 1.5;
+}
+
+/* Precio del producto */
+#listaPedido .pedido-info strong {
+  flex-shrink: 0;
+  color: #5C1A1A;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 /* ─────────────────────────────────────
-   BOTÓN ELIMINAR (❌)
+   BOTÓN ELIMINAR
 ──────────────────────────────────── */
+
 .btn-remove {
+  flex-shrink: 0;
   background: none;
   border: none;
   color: #A85050;
   font-size: 1rem;
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 4px;
+  padding: 4px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -975,4 +999,49 @@ footer {
 /* Click */
 .btn-remove:active {
   transform: scale(0.95);
+}
+
+/* ─────────────────────────────────────
+   PEDIDO VACÍO
+──────────────────────────────────── */
+
+#listaPedido .pedido-vacio {
+  display: block;
+  text-align: center;
+  color: #9A7060;
+  font-style: italic;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────
+   TOTAL DEL PEDIDO
+──────────────────────────────────── */
+
+#resumenTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 4px 4px;
+  margin-top: 10px;
+  border-top: 1px solid #e0d6c8;
+}
+
+#resumenTotal span {
+  color: #5A3E35;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+#resumenTotal strong {
+  color: #5C1A1A;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  white-space: nowrap;
 }
